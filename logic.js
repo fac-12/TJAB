@@ -42,6 +42,21 @@ function cleanAir(bCode) {
 
   xhr.open("GET", "http://api.erg.kcl.ac.uk/AirQuality/Daily/MonitoringIndex/Latest/LocalAuthorityId=" + bCode + "/Json", true);
   xhr.send();
+
 }
 
 cleanAir(33);
+
+// var pollRating = cleanAir(33)
+// function calcRating(finalVal){
+//   console.log(finalVal);
+//   var count = 0;
+//   var keyNo = 0
+//   for(var key in finalVal){
+//     count += finalVal[key];
+//     keyNo ++;
+//   }
+//   console.log(count);
+// }
+//
+// calcRating(pollRating);
