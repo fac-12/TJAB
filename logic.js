@@ -118,6 +118,15 @@ function updateDom(obj) {
 
   getUrl(rating, accesstoken);
 
+
+function parallelFunction2(searchGifs, addGif, url) {
+  var finalUrl = "";
+  searchGifs(url, function(image){
+    finalUrl = image;
+    addGif(finalUrl);
+
+  });
+}
   function searchGifs(url,cb) {
 
     var xhr = new XMLHttpRequest();
@@ -125,13 +134,16 @@ function updateDom(obj) {
       if (xhr.readyState === 4 && xhr.status === 200) {
       gifObject = JSON.parse(xhr.responseText);
       image = gifObject.data[0].images.original.url;
+      //cb below is callback (function(image) on line 124 above)
+      cb(image);
       }
+
     };
     xhr.open("GET", url, true);
     xhr.send();
   }
 
-    searchGifs(url);
+    parallelFunction2(searchGifs, addGif, url);
 }
 
 // function parallelFunction(cleanAir, updateDom,bCode) {
