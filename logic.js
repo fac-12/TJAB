@@ -184,18 +184,18 @@ function getUrl(rating, accesstoken) {
 
 getUrl(rating, accesstoken);
 
-function searchGifs(url,cb) {
-
-  var xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4 && xhr.status === 200) {
-    gifObject = JSON.parse(xhr.responseText);
-    image = gifObject.data[0].images.original.url;
-    addGif(image);
-    }
-  };
-  xhr.open("GET", url, true);
-  xhr.send();
-}
+// function searchGifs(url,cb) {
+//
+//   var xhr = new XMLHttpRequest();
+//   xhr.onreadystatechange = function() {
+//     if (xhr.readyState === 4 && xhr.status === 200) {
+//     gifObject = JSON.parse(xhr.responseText);
+//     image = gifObject.data[0].images.original.url;
+//     addGif(image);
+//     }
+//   };
+//   xhr.open("GET", url, true);
+//   xhr.send();
+// }
 
   // searchGifs(url);
