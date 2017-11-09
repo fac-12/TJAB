@@ -3,7 +3,7 @@ body {
 }
 
 .dropdown {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 2%;
   margin-bottom: 2%;
   position: relative;
@@ -41,6 +41,10 @@ body {
 }
 
 #gif {
+  margin: auto;
+}
+
+#title {
   margin: auto;
 }
 
