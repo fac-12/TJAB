@@ -80,16 +80,20 @@ function parallelFunction(cleanAir, updateDom,bCode) {
 function updateDom(obj) {
     var count = 0;
     var keyNo = 0;
+    var colour;
     for(var key in obj){
       count = count + obj[key];
       keyNo ++;
     };
  if (count/keyNo <=3.3){
    rating = 'celebration';
+   colour = 1;
  } else if (count/keyNo <=6.6){
    rating = 'uncertain';
+   colour = 2;
  } else {
    rating = 'hell+no';
+   colour = 3;
  };
   console.log(count/keyNo);
   console.log('updateDom', obj);
