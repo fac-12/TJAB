@@ -133,7 +133,7 @@ function parallelFunction2(searchGifs, addGif, url) {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === 4 && xhr.status === 200) {
       gifObject = JSON.parse(xhr.responseText);
-      image = gifObject.data.image_original_url;
+      image = gifObject.data.fixed_height_downsampled_url;
       //cb below is callback (function(image) on line 124 above)
       cb(image);
       }
