@@ -1,4 +1,7 @@
-function cleanAir(bCode, callback) {
+var x = 0;
+var counter = 0;
+
+function cleanAir(bCode, cb) {
   var pollutantOne = {
     "NO2": [],
     "O3": [],
@@ -9,8 +12,8 @@ function cleanAir(bCode, callback) {
   };
   var finalVal = {};
   var xhr = new XMLHttpRequest();
-  var counter = 0;
-  xhr.onreadystatechange = function(callback) {
+
+  xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var airResp = JSON.parse(xhr.responseText);
       var siteArr = airResp.DailyAirQualityIndex.LocalAuthority.Site;
@@ -32,9 +35,16 @@ function cleanAir(bCode, callback) {
           })
         }
       }
+      var resultVal;
+      var x = cb(finalVal);
+      console.log(x);
+
       }
-        callback(counter);
-        console.log(counter);
+      if(counter !== 0){
+        console.log(x);
+        return x;
+      }
+
     };
 
 
@@ -44,16 +54,34 @@ function cleanAir(bCode, callback) {
 //   if(Object.keys(finalVal).length !== 0){
 //     return finalVal;
 // }
-if(counter === 0){
-  return finalVal;
+
 }
+// var resultVal;
+// function cb(finalVal){
+//   counter++;
+//   resultVal = finalVal;
+//   return resultVal;
+//
+// }
+
+// console.log(cleanAir(33, cb));
+parallelFunction(cleanAir, updateDom);
+
+function parallelFunction(cleanAir, updateDom) {
+
+  var resultObj = {};
+
+  cleanAir(33, function(finalVal) {
+    resultObj = finalVal;
+    updateDom(resultObj);
+
+  })
 }
 
-function callback(counter){
-  counter = counter + 1;
+function updateDom(obj) {
+  //
+  console.log('updateDom', obj);
 }
-
-console.log(cleanAir(33, callback));
 
 // var pollRating = cleanAir(33);
 // function testFunction(val){
