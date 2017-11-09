@@ -1,0 +1,43 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.dropdown {
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-bottom: 2%;
+  position: relative;
+  display:inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 20%
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.item:hover {
+  background-color: rgb(167, 247, 223);
+}
+
+.item {
+  padding: 4%;
+  margin: 0;
+}
+
+.green {
+  background-color: rgb(9, 217, 86);
+}
+
+.red {
+  background-colour: rgb(217, 52 , 9);
+}
+
+.orange {
+  background-color: rgb(233, 157, 27);
+}
