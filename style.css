@@ -37,7 +37,11 @@ body {
   width: 50%;
   margin: auto;
   text-align: center;
-  
+
+}
+
+#gif {
+  margin: auto;
 }
 
 .green {
@@ -50,4 +54,9 @@ body {
 
 .orange {
   background-color: rgb(233, 157, 27);
+}
+
+.main-style {
+  display: flex;
+  flex-direction: column;
 }
