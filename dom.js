@@ -14,6 +14,9 @@ createListener();
 
 function addInfo(obj){
   var information=document.getElementById('info');
+  while (information.firstChild) {
+    information.removeChild(information.firstChild);
+  }
   for (var key in obj){
     var para=document.createElement('p');
     var text=document.createTextNode(key+':'+obj[key]);
@@ -27,8 +30,12 @@ function addInfo(obj){
 function addGif(image){
   var img = document.createElement('img');
   var giffy =document.getElementById('gif');
+  while (giffy.firstChild) {
+    giffy.removeChild(giffy.firstChild);
+  }
   img.src= image;
   giffy.appendChild(img);
+
 }
 
 function addColor(num){
