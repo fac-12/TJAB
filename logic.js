@@ -12,7 +12,6 @@ function cleanAir(bCode, cb) {
   };
   var finalVal = {};
   var xhr = new XMLHttpRequest();
-
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var airResp = JSON.parse(xhr.responseText);
@@ -65,13 +64,13 @@ function cleanAir(bCode, cb) {
 // }
 
 // console.log(cleanAir(33, cb));
-parallelFunction(cleanAir, updateDom);
+parallelFunction(cleanAir, updateDom,33);
 
-function parallelFunction(cleanAir, updateDom) {
+function parallelFunction(cleanAir, updateDom,bCode) {
 
   var resultObj = {};
 
-  cleanAir(33, function(finalVal) {
+  cleanAir(bCode, function(finalVal) {
     resultObj = finalVal;
     updateDom(resultObj);
 
@@ -137,4 +136,3 @@ function searchGifs(url,cb) {
 
 
   searchGifs(url);
-
