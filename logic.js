@@ -2,6 +2,7 @@ var x = 0;
 var counter = 0;
 
 function cleanAir(bCode, cb) {
+  console.log(bCode, cb);
   var pollutantOne = {
     "NO2": [],
     "O3": [],
@@ -36,7 +37,7 @@ function cleanAir(bCode, cb) {
       }
       var resultVal;
       var x = cb(finalVal);
-      console.log(x);
+      // console.log(x);
 
       }
       if(counter !== 0){
@@ -64,9 +65,10 @@ function cleanAir(bCode, cb) {
 // }
 
 // console.log(cleanAir(33, cb));
-parallelFunction(cleanAir, updateDom,33);
+// parallelFunction(cleanAir, updateDom,33);
 
 function parallelFunction(cleanAir, updateDom,bCode) {
+  console.log('running');
 
   var resultObj = {};
 
@@ -78,6 +80,8 @@ function parallelFunction(cleanAir, updateDom,bCode) {
 }
 
 function updateDom(obj) {
+    addInfo(obj);
+
     var count = 0;
     var keyNo = 0;
     var colour;
@@ -98,6 +102,7 @@ function updateDom(obj) {
   console.log(count/keyNo);
   console.log('updateDom', obj);
   console.log(rating);
+
 
   //giphy
   var gifObject;
@@ -129,6 +134,17 @@ function updateDom(obj) {
     searchGifs(url);
 }
 
+// function parallelFunction(cleanAir, updateDom,bCode) {
+//   console.log('running');
+//
+//   var resultObj = {};
+//
+//   cleanAir(bCode, function(finalVal) {
+//     resultObj = finalVal;
+//     updateDom(resultObj);
+//
+//   })
+// }
 // var pollRating = cleanAir(33);
 // function testFunction(val){
 //   return val;
@@ -163,10 +179,11 @@ function searchGifs(url,cb) {
     if (xhr.readyState === 4 && xhr.status === 200) {
     gifObject = JSON.parse(xhr.responseText);
     image = gifObject.data[0].images.original.url;
+    addGif(image);
     }
   };
   xhr.open("GET", url, true);
   xhr.send();
 }
 
-  searchGifs(url);
+  // searchGifs(url);
