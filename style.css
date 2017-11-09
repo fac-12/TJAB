@@ -10,6 +10,9 @@ body {
   display:inline-block;
 }
 
+.dropdown:hover {
+  cursor: pointer;
+}
 .dropdown-content {
   display: none;
   position: absolute;
@@ -28,6 +31,13 @@ body {
 .item {
   padding: 4%;
   margin: 0;
+}
+
+#info {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  
 }
 
 .green {
