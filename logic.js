@@ -78,8 +78,51 @@ function parallelFunction(cleanAir, updateDom,bCode) {
 }
 
 function updateDom(obj) {
-  //
+    var count = 0;
+    var keyNo = 0;
+    for(var key in obj){
+      count = count + obj[key];
+      keyNo ++;
+    };
+ if (count/keyNo <=3.3){
+   rating = 'celebration';
+ } else if (count/keyNo <=6.6){
+   rating = 'uncertain';
+ } else {
+   rating = 'hell+no';
+ };
+  console.log(count/keyNo);
   console.log('updateDom', obj);
+  console.log(rating);
+
+  //giphy
+  var gifObject;
+  var accesstoken = 'bwJcKSeE8a0p0nqVeigr2ktmzefR5Pkn';
+  var rating;
+  var url;
+  var image;
+
+  function getUrl(rating, accesstoken) {
+    url = "https://api.giphy.com/v1/gifs/search?q=" + rating + "&api_key="+accesstoken;
+    return url;
+  }
+
+  getUrl(rating, accesstoken);
+
+  function searchGifs(url,cb) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+      gifObject = JSON.parse(xhr.responseText);
+      image = gifObject.data[0].images.original.url;
+      }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
+  }
+
+    searchGifs(url);
 }
 
 // var pollRating = cleanAir(33);
@@ -92,27 +135,15 @@ function updateDom(obj) {
 // //setTimeout(testFunction(pollRating), 2000);
 
 
-// var pollRating = cleanAir(33)
-// function calcRating(finalVal){
-// console.log("working");
-//   var count = 0;
-//   var keyNo = 0;
-//   for(var key in finalVal){
-//     count = count + finalVal[key];
-//     keyNo ++;
-//   }
-//    return (JSON.stringify(finalVal));
-// }
 // console.log(calcRating(pollRating));
 
 
 
 var gifObject;
 var accesstoken = 'bwJcKSeE8a0p0nqVeigr2ktmzefR5Pkn';
-var rating = 'celebration';
+var rating;
 var url;
 var image;
-
 
 function getUrl(rating, accesstoken) {
   url = "https://api.giphy.com/v1/gifs/search?q=" + rating + "&api_key="+accesstoken;
@@ -133,6 +164,5 @@ function searchGifs(url,cb) {
   xhr.open("GET", url, true);
   xhr.send();
 }
-
 
   searchGifs(url);
