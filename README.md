@@ -39,6 +39,8 @@ Firstly we worked on the requests to the two APIs:
 
 ### Giphy
 
+* The initial plan was to choose a set of gifs by their ID in the Giphy API. We would then request these gifs and store their urls in an array to use as and when required. We decided that this was perhaps not the best use of the API, and could lead to complications if the specific gifs are erased.
+
 * We made a request to the Giphy API by requesting a random image filtered by one of three search terms. These search terms would depend on the results obtained by the London Air Quality API.
 
 * We added a MPAA rating filter to our request so as to reduce the risk of displaying an inapporiate image.
