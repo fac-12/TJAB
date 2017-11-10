@@ -16,8 +16,11 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  min-width: 20%
+  /*min-width: 20%*/
   z-index: 1;
+  overflow: auto;
+  max-height: 35rem;
+  overflow-x: hidden;
 }
 
 .dropdown:hover .dropdown-content {
@@ -51,7 +54,7 @@ body {
 }
 .title{
   font-size: 5rem;
-  padding-top: 8%;
+  padding-top: 5%;
 }
 .green {
   background-color: rgb(9, 217, 86);
