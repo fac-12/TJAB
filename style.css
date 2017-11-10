@@ -3,7 +3,7 @@ body {
 }
 
 .dropdown {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 2%;
   margin-bottom: 2%;
   position: relative;
@@ -37,7 +37,15 @@ body {
   width: 50%;
   margin: auto;
   text-align: center;
-  
+
+}
+
+#gif {
+  margin: auto;
+}
+
+#title {
+  margin: auto;
 }
 
 .green {
@@ -50,4 +58,9 @@ body {
 
 .orange {
   background-color: rgb(233, 157, 27);
+}
+
+.main-style {
+  display: flex;
+  flex-direction: column;
 }
