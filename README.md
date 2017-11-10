@@ -50,8 +50,14 @@ Firstly we worked on the requests to the two APIs:
 
 2. A function to add the information we had extracted from the London Air API into the DOM.
 
+<<<<<<< HEAD
+3. A function to display the correct random Gif we had requested from the API
+
+4. A function to display a colour rating for the borough based on our calculations
+=======
 3. A function to display the correct random Gif we had requested from the API.
 
 4. A function to display a colour rating for the borough based on our calculations.
+>>>>>>> b663d9d17a10eba8c3d1d4747ccaa57934aae832
 
 ### Lessons learned

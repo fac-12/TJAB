@@ -42,7 +42,7 @@ function addError(){
     // while (information.firstChild) {
     //   information.removeChild(information.firstChild);
     // }
-
+}
 
 function introText(lonBorough){
   var introTitle = document.getElementById("title")
