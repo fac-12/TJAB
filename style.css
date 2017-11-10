@@ -26,6 +26,8 @@ body {
 
 .item:hover {
   background-color: rgb(167, 247, 223);
+  transform: scale(1.1);
+
 }
 
 .item {
@@ -47,7 +49,10 @@ body {
 #title {
   margin: auto;
 }
-
+.title{
+  font-size: 5rem;
+  padding-top: 8%;
+}
 .green {
   background-color: rgb(9, 217, 86);
 }
