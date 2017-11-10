@@ -26,6 +26,24 @@ function addInfo(obj){
   }
 }
 
+
+
+function addError(){
+  var titleErr=document.getElementById('info');
+  while (titleErr.firstChild) {
+    titleErr.removeChild(titleErr.firstChild);
+  }
+    var para=document.createElement('p');
+    var text=document.createTextNode('Sorry, daily monitoring not available');
+    para.appendChild(text);
+    titleErr.appendChild(para);
+    //
+    // var information=document.getElementById('info');
+    // while (information.firstChild) {
+    //   information.removeChild(information.firstChild);
+    // }
+
+
 function introText(lonBorough){
   var introTitle = document.getElementById("title")
   while (introTitle.firstChild) {
@@ -35,6 +53,7 @@ function introText(lonBorough){
   var intro=document.createTextNode("The latest daily air quality levels in " + lonBorough + " are:");
   introText.appendChild(intro)
   introTitle.appendChild(introText);
+
 }
 
 function addGif(image){
