@@ -42,6 +42,10 @@ function addError(){
     while (imgErr.firstChild){
       imgErr.removeChild(imgErr.firstChild);
     }
+    var errInfo = document.getElementById('title')
+    while (errInfo.firstChild){
+      errInfo.removeChild(errInfo.firstChild);
+    }
     //
     // var information=document.getElementById('info');
     // while (information.firstChild) {
