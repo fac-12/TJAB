@@ -37,6 +37,7 @@ function addError(){
     var text=document.createTextNode('Sorry, daily monitoring not available');
     para.appendChild(text);
     titleErr.appendChild(para);
+    document.getElementById('spinner').classList.remove('spinner');
     //
     // var information=document.getElementById('info');
     // while (information.firstChild) {
