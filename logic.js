@@ -1,7 +1,7 @@
 var x = 0;
 var counter = 0;
 
-function cleanAir(bCode, cb) {
+function cleanAir(bCode, cb, lonBorough) {
   console.log(bCode, cb);
   var pollutantOne = {
     "Nitrogen Dioxide": [],
@@ -14,7 +14,10 @@ function cleanAir(bCode, cb) {
   var finalVal = {};
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      introText(lonBorough);
+      var spinner = document.getElementById('spinner');
+      spinner.className = "";
       var airResp = JSON.parse(xhr.responseText);
       var siteArr = airResp.DailyAirQualityIndex.LocalAuthority.Site;
       console.log(siteArr);
@@ -36,8 +39,10 @@ function cleanAir(bCode, cb) {
         }
       }
       var resultVal;
+
       var x = cb(null,finalVal);
       // console.log(x);
+
 
       }
       else if(xhr.status == 400){
@@ -51,27 +56,12 @@ function cleanAir(bCode, cb) {
 
     };
 
-
-
   xhr.open("GET", "http://api.erg.kcl.ac.uk/AirQuality/Daily/MonitoringIndex/Latest/LocalAuthorityId=" + bCode + "/Json", true);
   xhr.send();
-//   if(Object.keys(finalVal).length !== 0){
-//     return finalVal;
-// }
 
 }
-// var resultVal;
-// function cb(finalVal){
-//   counter++;
-//   resultVal = finalVal;
-//   return resultVal;
-//
-// }
 
-// console.log(cleanAir(33, cb));
-// parallelFunction(cleanAir, updateDom,33);
-
-function parallelFunction(cleanAir, updateDom,bCode) {
+function parallelFunction(cleanAir, updateDom,bCode,lonBorough) {
   console.log('running');
 
   var resultObj = {};
@@ -86,7 +76,7 @@ function parallelFunction(cleanAir, updateDom,bCode) {
     }
 
 
-  })
+  }, lonBorough)
 }
 
 function updateDom(obj) {
@@ -157,31 +147,6 @@ function parallelFunction2(searchGifs, addGif, url) {
     parallelFunction2(searchGifs, addGif, url);
 }
 
-// function parallelFunction(cleanAir, updateDom,bCode) {
-//   console.log('running');
-//
-//   var resultObj = {};
-//
-//   cleanAir(bCode, function(finalVal) {
-//     resultObj = finalVal;
-//     updateDom(resultObj);
-//
-//   })
-// }
-// var pollRating = cleanAir(33);
-// function testFunction(val){
-//   return val;
-// }
-//
-// console.log(setTimeout(testFunction(pollRating), 5000));
-//
-// //setTimeout(testFunction(pollRating), 2000);
-
-
-// console.log(calcRating(pollRating));
-
-
-
 var gifObject;
 var accesstoken = 'bwJcKSeE8a0p0nqVeigr2ktmzefR5Pkn';
 var rating;
@@ -194,19 +159,3 @@ function getUrl(rating, accesstoken) {
 }
 
 getUrl(rating, accesstoken);
-
-// function searchGifs(url,cb) {
-//
-//   var xhr = new XMLHttpRequest();
-//   xhr.onreadystatechange = function() {
-//     if (xhr.readyState === 4 && xhr.status === 200) {
-//     gifObject = JSON.parse(xhr.responseText);
-//     image = gifObject.data[0].images.original.url;
-//     addGif(image);
-//     }
-//   };
-//   xhr.open("GET", url, true);
-//   xhr.send();
-// }
-
-  // searchGifs(url);
