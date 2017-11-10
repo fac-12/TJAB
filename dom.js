@@ -37,18 +37,6 @@ function introText(lonBorough){
   introTitle.appendChild(introText);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function addGif(image){
   var img = document.createElement('img');
   var giffy =document.getElementById('gif');
