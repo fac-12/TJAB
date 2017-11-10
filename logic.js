@@ -39,7 +39,14 @@ function cleanAir(bCode, cb, lonBorough) {
         }
       }
       var resultVal;
-      var x = cb(finalVal);
+
+      var x = cb(null,finalVal);
+      // console.log(x);
+
+
+      }
+      else if(xhr.status == 400){
+        cb('err');
 
       }
       if(counter !== 0){
@@ -59,14 +66,21 @@ function parallelFunction(cleanAir, updateDom,bCode,lonBorough) {
 
   var resultObj = {};
 
-  cleanAir(bCode, function(finalVal) {
-    resultObj = finalVal;
-    updateDom(resultObj);
+  cleanAir(bCode, function(err,finalVal) {
+    if(err){
+      addError();
+    }
+    else{
+          resultObj = finalVal;
+          updateDom(resultObj);
+    }
+
 
   }, lonBorough)
 }
 
 function updateDom(obj) {
+
     addInfo(obj);
 
     var count = 0;
