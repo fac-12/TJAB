@@ -3,16 +3,10 @@ function createListener(){
   for (var i=1; i<=33;i++){
     console.log("EL on");
     document.getElementById(i.toString()).addEventListener('click',function(event){
-    parallelFunction(cleanAir,updateDom,event.target.id);
-    var introTitle = document.getElementById("title")
-    while (introTitle.firstChild) {
-      introTitle.removeChild(introTitle.firstChild);
-    }
-    var introText=document.createElement('p');
-    var lonBorough = event.target.innerText
-    var intro=document.createTextNode("The latest daily air quality levels in " + lonBorough + " are:");
-    introText.appendChild(intro)
-    introTitle.appendChild(introText);
+    var lonBorough = event.target.innerText;
+    parallelFunction(cleanAir,updateDom,event.target.id,lonBorough);
+    var spinnner = document.getElementById('spinner');
+    spinner.className = "spinner";
   });
   }
 }
@@ -31,6 +25,29 @@ function addInfo(obj){
     information.appendChild(para);
   }
 }
+
+function introText(lonBorough){
+  var introTitle = document.getElementById("title")
+  while (introTitle.firstChild) {
+    introTitle.removeChild(introTitle.firstChild);
+  }
+  var introText=document.createElement('p');
+  var intro=document.createTextNode("The latest daily air quality levels in " + lonBorough + " are:");
+  introText.appendChild(intro)
+  introTitle.appendChild(introText);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function addGif(image){
   var img = document.createElement('img');

@@ -1,7 +1,7 @@
 var x = 0;
 var counter = 0;
 
-function cleanAir(bCode, cb) {
+function cleanAir(bCode, cb, lonBorough) {
   console.log(bCode, cb);
   var pollutantOne = {
     "Nitrogen Dioxide": [],
@@ -15,6 +15,9 @@ function cleanAir(bCode, cb) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
+      introText(lonBorough);
+      var spinner = document.getElementById('spinner');
+      spinner.className = "";
       var airResp = JSON.parse(xhr.responseText);
       var siteArr = airResp.DailyAirQualityIndex.LocalAuthority.Site;
       console.log(siteArr);
@@ -67,7 +70,7 @@ function cleanAir(bCode, cb) {
 // console.log(cleanAir(33, cb));
 // parallelFunction(cleanAir, updateDom,33);
 
-function parallelFunction(cleanAir, updateDom,bCode) {
+function parallelFunction(cleanAir, updateDom,bCode,lonBorough) {
   console.log('running');
 
   var resultObj = {};
@@ -76,7 +79,7 @@ function parallelFunction(cleanAir, updateDom,bCode) {
     resultObj = finalVal;
     updateDom(resultObj);
 
-  })
+  }, lonBorough)
 }
 
 function updateDom(obj) {
