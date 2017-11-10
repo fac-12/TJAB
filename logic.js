@@ -14,7 +14,7 @@ function cleanAir(bCode, cb) {
   var finalVal = {};
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
+    if (xhr.readyState == 4) {
       var airResp = JSON.parse(xhr.responseText);
       var siteArr = airResp.DailyAirQualityIndex.LocalAuthority.Site;
       console.log(siteArr);
@@ -36,8 +36,12 @@ function cleanAir(bCode, cb) {
         }
       }
       var resultVal;
-      var x = cb(finalVal);
+      var x = cb(null,finalVal);
       // console.log(x);
+
+      }
+      else if(xhr.status == 400){
+        cb('err');
 
       }
       if(counter !== 0){
@@ -72,14 +76,21 @@ function parallelFunction(cleanAir, updateDom,bCode) {
 
   var resultObj = {};
 
-  cleanAir(bCode, function(finalVal) {
-    resultObj = finalVal;
-    updateDom(resultObj);
+  cleanAir(bCode, function(err,finalVal) {
+    if(err){
+      addError();
+    }
+    else{
+          resultObj = finalVal;
+          updateDom(resultObj);
+    }
+
 
   })
 }
 
 function updateDom(obj) {
+
     addInfo(obj);
 
     var count = 0;

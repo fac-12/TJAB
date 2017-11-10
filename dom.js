@@ -32,6 +32,24 @@ function addInfo(obj){
   }
 }
 
+
+function addError(){
+  var titleErr=document.getElementById('info');
+  while (titleErr.firstChild) {
+    titleErr.removeChild(titleErr.firstChild);
+  }
+    var para=document.createElement('p');
+    var text=document.createTextNode('Sorry, daily monitoring not available');
+    para.appendChild(text);
+    titleErr.appendChild(para);
+    //
+    // var information=document.getElementById('info');
+    // while (information.firstChild) {
+    //   information.removeChild(information.firstChild);
+    // }
+
+}
+
 function addGif(image){
   var img = document.createElement('img');
   var giffy =document.getElementById('gif');
