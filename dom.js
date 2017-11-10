@@ -3,11 +3,18 @@ function createListener(){
   for (var i=1; i<=33;i++){
     console.log("EL on");
     document.getElementById(i.toString()).addEventListener('click',function(event){
-    console.log('click working');
     parallelFunction(cleanAir,updateDom,event.target.id);
+    var introTitle = document.getElementById("title")
+    while (introTitle.firstChild) {
+      introTitle.removeChild(introTitle.firstChild);
+    }
+    var introText=document.createElement('p');
+    var lonBorough = event.target.innerText
+    var intro=document.createTextNode("The latest daily air quality levels in " + lonBorough + " are:");
+    introText.appendChild(intro)
+    introTitle.appendChild(introText);
   });
   }
-
 }
 
 createListener();
@@ -19,12 +26,10 @@ function addInfo(obj){
   }
   for (var key in obj){
     var para=document.createElement('p');
-    var text=document.createTextNode(key+':'+obj[key]);
+    var text=document.createTextNode(key+ ':  ' +obj[key]);
     para.appendChild(text);
     information.appendChild(para);
   }
-
-
 }
 
 function addGif(image){
