@@ -4,6 +4,18 @@ function createListener(){
     console.log("EL on");
     document.getElementById(i.toString()).addEventListener('click',function(event){
     var lonBorough = event.target.innerText;
+    var errInfo = document.getElementById('title')
+    while (errInfo.firstChild){
+      errInfo.removeChild(errInfo.firstChild);
+    }
+    var imgErr=document.getElementById('gif');
+    while (imgErr.firstChild){
+      imgErr.removeChild(imgErr.firstChild);
+    }
+    var information=document.getElementById('info');
+    while (information.firstChild) {
+      information.removeChild(information.firstChild);
+    }
     parallelFunction(cleanAir,updateDom,event.target.id,lonBorough);
     var spinnner = document.getElementById('spinner');
     spinner.className = "spinner";
